@@ -13,8 +13,7 @@ async function main() {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("connected");
     const noteSchema = new mongoose.Schema({
-      title: String,
-      content: String,
+      todo: String,
       complited: { type: Boolean, default: false },
       createdAt: { type: Date, default: Date.now },
     });
@@ -32,7 +31,7 @@ async function main() {
 
     app.post("/todos", async (req, res) => {
       try {
-        await Note.create({ title: "new mongoose", content: "more data" });
+        await Note.create(req.body);
         res.redirect("/todos");
       } catch (err) {
         console.error(err.message);
