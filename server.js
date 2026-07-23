@@ -41,10 +41,12 @@ async function main() {
     app.put("/todos/:id", async (req, res) => {
       try {
         const id = req.params.id;
-        const update = await Note.findById(id);
-        update.complited = !update.complited;
-        await update.save();
-        res.send(update);
+
+        const todos = await Note.findById(id);
+        todos.complited = !todos.complited;
+        await todos.save();
+        const updated = await Note.find();
+        res.send(updated);
       } catch (err) {
         console.error(err.message);
       }
@@ -53,6 +55,7 @@ async function main() {
     app.delete("/todos/:id", async (req, res) => {
       try {
         const id = req.params.id;
+
         await Note.findByIdAndDelete(id);
         const todos = await Note.find();
         res.send(todos);
