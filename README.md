@@ -1,29 +1,30 @@
-# Note API
+# Todos API
 
-You can create, update, delete any note and get it from this API.
+You can create, update, delete, and retrieve todos using this API.
 
 [Live Demo](https://note-api-1s7l.onrender.com/)
-![Alt text](image.png "Screen Shot")
 
-## Features List
+![Screenshot](icons.svg "Screenshot")
 
-- Store any todos.
-- View it in a frontend.
-- Toggle the complited todo.
-- Delete any todo item.
+## Features
 
-## Tech stack
+- Create and store todos.
+- View todos in the frontend.
+- Toggle a todo's completed status.
+- Delete any todo.
 
-Built with Express, JavaScript and NodeJs.
+## Tech Stack
 
-## What I learned
+Built with Express, JavaScript, and Node.js.
 
-I learn how to create a CRUD opration. How to talk to the server from a frontend using CORS.
+## What I Learned
 
-## How to run it locally
+I learned how to build a CRUD application and communicate with a server from a frontend application using CORS.
 
-```
-git clone [https://github.com/Anshuman56/note-api]
+## How to Run It Locally
+
+```bash
+git clone https://github.com/Anshuman56/note-api.git
 cd note-api
 npm install
 node server.js
