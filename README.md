@@ -4,7 +4,7 @@ You can create, update, delete, and retrieve todos using this API.
 
 [Live Demo](https://note-api-1s7l.onrender.com/)
 
-![Screenshot](icons.svg "Screenshot")
+![Screenshot](001.png "Screenshot")
 
 ## Features
 

@@ -12,18 +12,18 @@ async function main() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("connected");
-    const noteSchema = new mongoose.Schema({
+    const todoSchema = new mongoose.Schema({
       todo: String,
       complited: { type: Boolean, default: false },
       createdAt: { type: Date, default: Date.now },
     });
 
-    const Note = new mongoose.model("Note", noteSchema);
+    const Todo = new mongoose.model("Todo", todoSchema);
 
     app.get("/todos", async (req, res) => {
       try {
-        const notes = await Note.find();
-        res.send(notes);
+        const todos = await Todo.find();
+        res.send(todos);
       } catch (err) {
         console.error(err.message);
       }
@@ -31,7 +31,7 @@ async function main() {
 
     app.post("/todos", async (req, res) => {
       try {
-        await Note.create(req.body);
+        await Todo.create(req.body);
         res.redirect("/todos");
       } catch (err) {
         console.error(err.message);
@@ -42,10 +42,10 @@ async function main() {
       try {
         const id = req.params.id;
 
-        const todos = await Note.findById(id);
-        todos.complited = !todos.complited;
-        await todos.save();
-        const updated = await Note.find();
+        const todo = await Todo.findById(id);
+        todo.complited = !todo.complited;
+        await todo.save();
+        const updated = await Todo.find();
         res.send(updated);
       } catch (err) {
         console.error(err.message);
@@ -56,8 +56,8 @@ async function main() {
       try {
         const id = req.params.id;
 
-        await Note.findByIdAndDelete(id);
-        const todos = await Note.find();
+        await Todo.findByIdAndDelete(id);
+        const todos = await Todo.find();
         res.send(todos);
       } catch (err) {
         console.error(err.message);
